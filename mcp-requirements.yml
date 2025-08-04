@@ -1,0 +1,59 @@
+# MCP Requirements for Silly Subclaudes System
+# Similar to requirements.txt but for Model Context Protocol servers
+
+mcps:
+  # Required MCPs
+  required:
+    - name: gemini
+      version: ">=1.0.0"
+      source: "@modelcontextprotocol/gemini-mcp"
+      description: "Large context analysis and model routing"
+      config:
+        DEFAULT_MODEL: "auto"
+        
+  # Optional but recommended
+  optional:
+    - name: github
+      version: "latest"
+      source: "@modelcontextprotocol/github"
+      description: "Repository management for code tasks"
+      
+    - name: brave-search
+      version: "latest"
+      source: "@modelcontextprotocol/brave-search"
+      description: "Web search for research tasks"
+      
+    - name: memory
+      version: "latest"
+      source: "@modelcontextprotocol/memory"
+      description: "Persistent memory across sessions"
+
+# Subagent capabilities used
+subagents:
+  - type: general-purpose
+    description: "Main task execution agents"
+    count: "dynamic"
+    
+# CLI tools expected
+cli_tools:
+  required:
+    - jq        # JSON processing
+    - gh        # GitHub CLI
+    - python3   # Script execution
+  optional:
+    - bat       # Better cat with syntax highlighting
+    - fd        # Fast file finder
+    - rg        # ripgrep for searching
+
+# Environment expectations
+environment:
+  claude_version: ">=1.0.0"
+  os: ["darwin", "linux"]
+  working_directory: "~/Documents/private-vault"
+  
+# Feature flags
+features:
+  zen_routing: true
+  personality_system: true
+  qa_round: true
+  parallel_execution: true

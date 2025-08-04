@@ -1,0 +1,75 @@
+{
+  "name": "silly-subclaudes",
+  "version": "1.0.0",
+  "description": "Parallel task execution system with personality-infused subclaude agents",
+  "type": "claude-code-extension",
+  "author": "Jim Jordan",
+  "license": "MIT",
+  
+  "claude_code": {
+    "min_version": "1.0.0",
+    "system_prompt_additions": "./CLAUDE.md",
+    "templates": [
+      "./BLANK_claude-to-do.md",
+      "./DETAILED_claude-to-do.md"
+    ],
+    "example_outputs": [
+      "./example_output.md"
+    ]
+  },
+  
+  "mcp_dependencies": {
+    "required": {
+      "gemini": {
+        "package": "@modelcontextprotocol/gemini-mcp",
+        "version": ">=1.0.0",
+        "config": {
+          "DEFAULT_MODEL": "auto"
+        }
+      }
+    },
+    "optional": {
+      "github": "@modelcontextprotocol/github",
+      "brave-search": "@modelcontextprotocol/brave-search",
+      "memory": "@modelcontextprotocol/memory"
+    }
+  },
+  
+  "subagent_definitions": {
+    "general-purpose": {
+      "count": "dynamic",
+      "capabilities": "full"
+    }
+  },
+  
+  "cli_dependencies": {
+    "required": ["jq", "gh", "python3"],
+    "optional": ["bat", "fd", "rg", "csvkit", "httpie"]
+  },
+  
+  "features": {
+    "parallel_execution": true,
+    "personality_system": true,
+    "qa_validation": true,
+    "zen_routing": true,
+    "hash_tracking": true
+  },
+  
+  "installation": {
+    "steps": [
+      "Copy CLAUDE.md contents to ~/.claude/CLAUDE.md",
+      "Install required MCPs via claude mcp add",
+      "Copy templates to ~/Documents/private-vault/",
+      "Ensure CLI tools are available"
+    ]
+  },
+  
+  "usage": {
+    "trigger": "Process claude-to-do.md",
+    "input_location": "~/Documents/private-vault/claude-to-do.md",
+    "output_pattern": "subclaude_report_[HASH].md"
+  },
+  
+  "repository": "https://github.com/james-m-jordan/silly-subclaudes",
+  "tags": ["orchestration", "parallel", "automation", "claude-code"]
+}
