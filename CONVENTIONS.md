@@ -1,7 +1,5 @@
 # Claude Code Package Conventions
 
-This appears to be a new pattern emerging for Claude Code extensions/systems. Here's what we're establishing:
-
 ## Package Structure
 
 ```
